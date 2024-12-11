@@ -30,6 +30,7 @@ const Home = () => {
   const swiperRef = useRef(null);
   const swiper = useSwiper();
   const router = useRouter();
+  const [nameCall, setNameCall] = useState("Sarah");
   const [loading, setLoading] = useState(true);
   const [imageURL, setImageURL] = useState('');
   const [formData, setFormData] = useState({
@@ -122,7 +123,7 @@ const Home = () => {
   };
 
   const proceedToNextSlide = () => {
-    const currentSlideIndex = swiperRef.current?.swiper?.activeIndex - 1;
+    const currentSlideIndex = swiperRef.current?.swiper?.activeIndex - 2;
 
     if (currentSlideIndex !== undefined) {
       const currentSlideData = [
@@ -136,7 +137,7 @@ const Home = () => {
       ];
 
       if (currentSlideData[currentSlideIndex] === '' && currentSlideIndex !== 2) {
-        alert('Please fill out the required field before proceeding.');
+        alert('Please fill out the required field before proceeding.' + currentSlideIndex);
         return;
       }
     }
@@ -211,10 +212,32 @@ const Home = () => {
 
             <SwiperSlide>
               <div className="w-full flex flex-col items-center">
-                <h2 className="text-xl my-5 text-center">What's Your Name? <br />
-                  Feel Free to Be Mysterious, Sarah's Got Your Back!
+                <h2 className="text-xl my-5 text-center">"What Do You Call Her?"
                 </h2>
-                <p className="text-justify font-sans mb-5">You don't have to use your real name—stay anonymous or go with the name Sarah knows you by. After all, a little mystery never hurt anyone! 😄</p>
+                <p className="text-justify font-sans mb-5">Share the special name you use to describe her—mom, nay, mentor, or something uniquely yours!</p>
+                <input
+                  name="name"
+                  value={nameCall}
+                  onChange={(e) => setNameCall(e.target.value)}
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full border text-center mb-5 border-gray-300 px-3 py-2 text-md font-medium text-black transition focus:outline-none rounded-lg font-sans"
+                />
+                <button
+                  onClick={proceedToNextSlide}
+                  className="w-full inline-block shrink-0 border bg-lightPink px-12 py-2 text-md font-medium text-black transition hover:bg-opacity-5 focus:outline-none rounded-lg"
+                >
+                  Proceed
+                </button>
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="w-full flex flex-col items-center">
+                <h2 className="text-xl my-5 text-center">What's Your Name? <br />
+                  Feel Free to Be Mysterious, {nameCall}'s Got Your Back!
+                </h2>
+                <p className="text-justify font-sans mb-5">You don't have to use your real name—stay anonymous or go with the name {nameCall} knows you by. After all, a little mystery never hurt anyone! 😄</p>
                 <input
                   name="name"
                   value={formData.name}
@@ -235,8 +258,8 @@ const Home = () => {
             <SwiperSlide>
               <div className="w-full flex flex-col items-center">
                 <img src="/image_three.png" alt="Picture of the Celebrant" className="w-full mt-5" />
-                <h2 className="text-xl my-5 text-center">"One Word for Sarah"</h2>
-                <p className="text-justify font-sans mb-5">Share the one word that best captures Sarah's spirit and personality.</p>
+                <h2 className="text-xl my-5 text-center">"One Word for {nameCall}"</h2>
+                <p className="text-justify font-sans mb-5">Share the one word that best captures {nameCall}'s spirit and personality.</p>
                 <input
                   name="oneWord"
                   value={formData.oneWord}
@@ -257,7 +280,7 @@ const Home = () => {
             <SwiperSlide>
               <div className="w-full flex flex-col items-center">
                 <img src="/image_two.png" alt="Picture of the Celebrant" className="w-full mt-5" />
-                <h2 className="text-xl my-5 text-center">“Upload Your Favorite Photo of You and Sarah <br /> (Let's Reminisce Together!)”</h2>
+                <h2 className="text-xl my-5 text-center">“Upload Your Favorite Photo of You and {nameCall} <br /> (Let's Reminisce Together!)”</h2>
                 <p className="text-justify font-sans mb-5">Your photo will be posted on her Album Wall, creating a beautiful tribute to the cherished moments you shared. 📸✨
                 </p>
 
@@ -306,7 +329,7 @@ const Home = () => {
               <div className="w-full flex flex-col items-center">
                 <img src="/image_four.png" alt="Picture of the Celebrant" className="w-2/3 mt-5" />
                 <h2 className="text-xl my-5 text-center">“Letter from the Heart”</h2>
-                <p className="text-justify font-sans mb-5">Tell us how Sarah managed to teach, inspire, and make life way more fun! Share your favorite memories, lessons learned, and the moments that made you smile. 💌💕
+                <p className="text-justify font-sans mb-5">Tell us how {nameCall} managed to teach, inspire, and make life way more fun! Share your favorite memories, lessons learned, and the moments that made you smile. 💌💕
                 </p>
 
                 <textarea
@@ -355,7 +378,7 @@ const Home = () => {
               <div className="w-full flex flex-col items-center">
                 <img src="/image_six.png" alt="Picture of the Celebrant" className="w-2/3 m-auto mt-5" />
                 <h2 className="text-xl my-5 text-center">“A Space for Heartfelt Birthday Wishes”</h2>
-                <p className="text-justify font-sans mb-5">Leave Your Messages of Love and Joy for Sarah's Special Day 🎂🎈
+                <p className="text-justify font-sans mb-5">Leave Your Messages of Love and Joy for {nameCall}'s Special Day 🎂🎈
                 </p>
 
                 <textarea
