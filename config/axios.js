@@ -7,8 +7,8 @@ import axios from "axios";
 // "export default () => {}" function below (which runs individually
 // for each client)
 
-//axios.defaults.baseURL = "https://mlaserver-hb5vv.ondigitalocean.app/api";
-axios.defaults.baseURL = "http://192.168.100.167:1337/api";
+axios.defaults.baseURL = "https://mlaserver-hb5vv.ondigitalocean.app/api";
+//axios.defaults.baseURL = "http://192.168.100.167:1337/api";
 //axios.defaults.baseURL = "http://localhost:1337/api";
 
 export { axios };
