@@ -5,12 +5,24 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --violet: #Cdb4db;
+  --light-pink: #Ffc8dd;
+  --dark-pink: #Ffafcc;
+  --light-blue: #Bde0fe;
+  --dark-blue: #a2d2ff;
+      
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #171717;
+    --violet: #Cdb4db;
+    --light-pink: #Ffc8dd;
+    --dark-pink: #Ffafcc;
+    --light-blue: #Bde0fe;
+    --dark-blue: #a2d2ff;
   }
 }
 
@@ -18,4 +30,13 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.swiper-slide {
+  transition: transform 1s ease-in-out; /* Ensures smooth transitions */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #a2d2ff !important;
 }

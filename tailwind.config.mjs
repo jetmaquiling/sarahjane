@@ -10,6 +10,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        violet: "var(--violet)",
+        lightPink: "var(--light-pink)",
+        darkPink: "var(--dark-pink)",
+        lightBlue: "var(--light-blue)",
+        darkBlue: "var(--dark-blue)",
       },
     },
   },
