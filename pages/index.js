@@ -30,6 +30,7 @@ const Home = () => {
   const swiperRef = useRef(null);
   const swiper = useSwiper();
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const [imageURL, setImageURL] = useState('');
   const [formData, setFormData] = useState({
     name: '',
@@ -40,6 +41,12 @@ const Home = () => {
     message: '',
     score: "OVERWORKED"
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false); // Stop loading after 2 seconds
+    }, 2000);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,24 +72,28 @@ const Home = () => {
   };
 
   const registerUser = async () => {
+    setLoading(true);
     console.log("Registering User", formData);
     const response = await register(formData.name, formData.oneWord, formData.image, formData.inspire, formData.playlist, formData.message, formData.score);
     console.log(response)
     if (response) {
       proceedToNextSlide();
+      setLoading(false);
     } else {
-      //router.push('/error');
+      router.push('/error');
     }
+    setLoading(false);
   }
 
   const handleImageUploadChange = async (event) => {
     try {
+      setLoading(true);
       console.log("Image Upload", event.target.files[0]);
       const file = event.target.files[0];
 
       if (!file) return;
       // Check file size (in bytes)
-      const maxSizeMB = 10; // Example: 5 MB
+      const maxSizeMB = 15; // Example: 5 MB
       const maxSizeBytes = maxSizeMB * 1024 * 1024; // Convert MB to bytes
       if (file.size > maxSizeBytes) {
         alert(`File size exceeds the maximum allowed size of ${maxSizeMB} MB.`);
@@ -105,6 +116,8 @@ const Home = () => {
     } catch (error) {
       console.error("Error Upload Image", error);
       // Handle error if needed
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -141,6 +154,7 @@ const Home = () => {
     }
   }
 
+
   return (
     <div className={`min-h-screen ${geistSans.className} ${dmSerifText.className}`}>
       <Head>
@@ -151,11 +165,21 @@ const Home = () => {
 
         <meta property="og:title" content="Let’s Make Her Day Unforgettable!" />
         <meta property="og:description" content="Celebrate with fun, stories, and memories!" />
-        <meta property="og:image" content="https://sarahjane.vercel.app/thumbnail.jpg" />
-        <meta property="og:url" content="https://sarahjane.vercel.app" />
+        <meta property="og:image" content="https://sarah-jane.vercel.app/thumbnail.jpg" />
+        <meta property="og:url" content="https://sarah-jane.vercel.app" />
         <meta property="og:type" content="website" />
 
       </Head>
+
+      {/* Loading Overlay */}
+      {loading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-200  z-50">
+          <img src="/logo.png" alt="Picture of the Celebrant" className="w-3/5 m-auto" />
+        </div>
+      )}
+
+
+
       <div className='h-full flex-grow flex flex-col justify-center max-w-md m-auto border-2 p-5'>
         <img src="/logo.png" alt="Picture of the Celebrant" className="w-1/2 m-auto" />
         <button onClick={proceedToPrevSlide}><ArrowLeft className="h-10 absolute top-5 left-5" /></button>
@@ -254,9 +278,9 @@ const Home = () => {
                   <img
                     // Ensure each element has a unique key
                     alt={imageURL} // Use optional chaining to avoid errors if attributes is undefined
-                    className="aspect-square w-full rounded-md object-cover"
+                    className="aspect-square w-full rounded-md object-cover border-2 border-slate-400 my-5"
                     height="300"
-                    src={" http://localhost:1337" + imageURL} // Use optional chaining to avoid errors if attributes is undefined
+                    src={imageURL} // Use optional chaining to avoid errors if attributes is undefined
                     width="300"
                   />
                 )}
@@ -376,6 +400,7 @@ const Home = () => {
           </Swiper>
         </div>
       </div>
+
     </div>
   );
 };

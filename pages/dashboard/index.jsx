@@ -41,13 +41,28 @@ const shuffleArray = (array) => {
 const Home = () => {
     const router = useRouter();
     const [datalist, setDataslist] = useState([]);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         getAllData().then((data) => {
-            console.log(data);
             setDataslist([...data]);
-        })
+            // Wait for 2 seconds after the data is fetched
+            setTimeout(() => {
+                setLoading(false); // Stop loading after 2 seconds
+            }, 2000);
+        });
     }, []);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex justify-center items-center bg-gray-100">
+                <div className="text-center">
+                    <img src="/logo.png" alt="Picture of the Celebrant" className="w-3/5 m-auto" />
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className={`min-h-screen ${geistSans.className} ${dmSerifText.className}`}>
@@ -121,7 +136,7 @@ const Home = () => {
                                             <div className=" flex items-center gap-4">
                                                 <img
                                                     alt=""
-                                                    src={data.attributes.image ? data.attributes.image.data.attributes.url : "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"}
+                                                    src={data.attributes.image.data ? data.attributes.image.data.attributes.url : "/default.jpg"}
                                                     className="size-14 rounded-full object-cover"
                                                 />
 
@@ -168,7 +183,7 @@ const Home = () => {
                                             <div className="flex items-center gap-4">
                                                 <img
                                                     alt=""
-                                                    src={data.attributes.image ? data.attributes.image.data.attributes.url : "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"}
+                                                    src={data.attributes.image.data ? data.attributes.image.data.attributes.url : "/default.jpg"}
                                                     className="size-14 rounded-full object-cover"
                                                 />
 
@@ -213,7 +228,7 @@ const Home = () => {
                                             <div className="flex items-center gap-4">
                                                 <img
                                                     alt=""
-                                                    src={data.attributes.image ? data.attributes.image.data.attributes.url : "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"}
+                                                    src={data.attributes.image.data ? data.attributes.image.data.attributes.url : "/default.jpg"}
                                                     className="size-14 rounded-full object-cover"
                                                 />
 
