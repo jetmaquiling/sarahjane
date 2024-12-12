@@ -212,17 +212,17 @@ const Home = () => {
                   Thank you for being here to honor someone so extraordinary. Let’s make this celebration as bright and beautiful as she is!
                 </p>
                 <button
-                  onClick={proceedToNextSlide}
+                  onClick={()=>{router.push("/dashboard")}}
                   className="w-full inline-block shrink-0 border bg-lightPink px-12 py-2 text-md font-medium text-black transition hover:bg-opacity-5 focus:outline-none rounded-lg"
                 >
-                  Proceed
+                  View Messages
                 </button>
 
                 <button
-                  onClick={()=>{router.push("/dashboard")}}
+                  onClick={proceedToNextSlide}
                   className="w-full inline-block shrink-0 bg-white px-12 py-2 text-md font-medium text-black transition hover:bg-opacity-5 focus:outline-none rounded-lg"
                 >
-                  View Messages
+                  Create Message
                 </button>
               </div>
             </SwiperSlide>
