@@ -75,7 +75,7 @@ const Home = () => {
                 <meta property="og:title" content="Let’s Make Her Day Unforgettable!" />
                 <meta property="og:description" content="Celebrate with fun, stories, and memories!" />
                 <meta property="og:image" content="https://sarahjane.vercel.app/thumbnail.jpg" />
-                <meta property="og:url" content="https://sarahjane.vercel.app" />
+                <meta property="og:url" content="https://sarahjane.vercel.app/dashboard" />
                 <meta property="og:type" content="website" />
 
             </Head>

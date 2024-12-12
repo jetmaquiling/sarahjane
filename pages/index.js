@@ -217,6 +217,13 @@ const Home = () => {
                 >
                   Proceed
                 </button>
+
+                <button
+                  onClick={()=>{router.push("/dashboard")}}
+                  className="w-full inline-block shrink-0 bg-white px-12 py-2 text-md font-medium text-black transition hover:bg-opacity-5 focus:outline-none rounded-lg"
+                >
+                  View Messages
+                </button>
               </div>
             </SwiperSlide>
 
