@@ -129,6 +129,7 @@ const Home = () => {
                         touchRatio={1}
                     >
                         {shuffleArray(datalist).map((data, index) => {
+                            if(data.attributes.inspire == '') return null;
                             return (
                                 <SwiperSlide>
                                     <div className="flex flex-col items-center">
@@ -176,6 +177,8 @@ const Home = () => {
                     >
 
                         {shuffleArray(datalist).map((data, index) => {
+
+                            if(data.attributes.message === "") return null;
                             return (
                                 <SwiperSlide>
                                     <div className="flex flex-col items-center">
@@ -221,6 +224,7 @@ const Home = () => {
                         touchRatio={1}
                     >
                         {shuffleArray(datalist).map((data, index) => {
+                            if(data.attributes.playlist === "") return null;
                             return (
                                 <SwiperSlide>
                                     <div className="w-full flex flex-col items-center">
