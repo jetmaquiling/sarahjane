@@ -256,7 +256,7 @@ const Home = () => {
                     </Swiper>
 
                     <a
-                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent("facebook.com")}&quote=${encodeURIComponent("AMazing")}&hashtag=${encodeURIComponent("#Wow")}`}
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent("https://sarah-jane.vercel.app/dashboard")}&quote=${encodeURIComponent("Happy Birthday")}&hashtag=${encodeURIComponent("#HappyBirthday")}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-blue-600 text-white px-4 py-2 rounded-md flex items-center mt-20"
